@@ -2,23 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
 import { Header } from "semantic-ui-react";
-// import PropTypes from 'prop-types'
-// import React, { Component } from 'react'
-// import {
-//   Button,
-//   Container,
-//   Divider,
-//   Grid,
-//   Header,
-//   Icon,
-//   Image,
-//   List,
-//   Menu,
-//   Responsive,
-//   Segment,
-//   Sidebar,
-//   Visibility,
-// } from 'semantic-ui-react'
 
 const summonerNameURL = "http://localhost:3000/summoner_name";
 
