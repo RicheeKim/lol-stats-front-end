@@ -32,7 +32,7 @@ class App extends Component {
     let searchingTerm = e.target.value;
 
     this.setState({
-      searchTerm: searchingTerm.split(" ").join("_")
+      searchTerm: searchingTerm
     });
   };
 
@@ -43,7 +43,9 @@ class App extends Component {
 
   searchSummonerName = () => {
     if (this.state.searchTerm) {
-      return fetch(summonerNameURL + `/${this.state.searchTerm}`)
+      const URL =
+        summonerNameURL + `/${this.state.searchTerm.split(" ").join("_")}`;
+      return fetch(URL)
         .then((res) => res.json())
         .then((summoner) =>
           this.setState(
