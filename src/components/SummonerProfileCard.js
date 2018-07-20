@@ -18,8 +18,10 @@ class SummonerProfileCard extends React.Component {
           <Card.Meta>
             <span>
               {this.props.summonerTier} {this.props.summonerRank}{" "}
-              {this.props.summonerLP} LP
             </span>
+          </Card.Meta>
+          <Card.Meta>
+            <span>{this.props.summonerLP} LP</span>
           </Card.Meta>
           <Card.Description>
             Wins: {this.props.summonerWins} / Losses:{" "}

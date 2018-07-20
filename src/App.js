@@ -82,10 +82,15 @@ class App extends Component {
   };
 
   filterQueueType = (summoner) => {
-    // console.log(summoner);
-    return summoner.filter(
-      (summoner) => summoner.queueType === "RANKED_SOLO_5x5"
-    );
+    console.log(summoner);
+    if (summoner === []) {
+      console.log("hello");
+    } else {
+      return summoner.filter(
+        (summoner) => summoner.queueType === "RANKED_SOLO_5x5"
+      );
+      //   console.log("no one here");
+    }
   };
 
   // getSummonerMatches = () => {
