@@ -3,10 +3,13 @@ import "./App.css";
 import Searchbar from "./components/Searchbar";
 import SummonerDetails from "./components/SummonerDetails";
 import SummonerProfileCard from "./components/SummonerProfileCard";
+import SummonerMatchList from "./components/SummonerMatchList";
 import { Header } from "semantic-ui-react";
+import { Grid, Segment, Divider } from "semantic-ui-react";
 
 const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
+const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 
 class App extends Component {
   constructor() {
@@ -56,6 +59,7 @@ class App extends Component {
             },
             () => {
               this.getSummonerData();
+              this.getSummonerMatches();
             }
             // Promise.resolve(true)
           )
@@ -93,9 +97,15 @@ class App extends Component {
     }
   };
 
-  // getSummonerMatches = () => {
-  //   fetch;
-  // };
+  getSummonerMatches = () => {
+    fetch(summonerMatchesURL + `/${this.state.accountId}`)
+      .then((res) => res.json())
+      .then((matches) =>
+        this.setState({
+          matchList: matches.matches
+        })
+      );
+  };
 
   // getSummonerDetails = () => {
   //   this.searchSummonerName().then(this.getSummonerData());
@@ -138,6 +148,8 @@ class App extends Component {
             summonerLosses={this.state.summonerLosses}
           />
         ) : null}
+
+        <SummonerMatchList matchList={this.state.matchList} />
       </div>
     );
   }
