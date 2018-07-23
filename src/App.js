@@ -7,6 +7,8 @@ import SummonerMatchList from "./components/SummonerMatchList";
 import { Header } from "semantic-ui-react";
 import { Grid, Segment, Divider } from "semantic-ui-react";
 
+const champions = require(`./dragontail-8.14.1/8.14.1/data/en_US/champion.json`);
+
 const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
@@ -39,8 +41,14 @@ class App extends Component {
     });
   };
 
+  // setChampions = () => {
+  //   Object.keys(champions.data).forEach(function(key) {
+  //     this.setState({ championList: champions.data[key].key });
+  //   });
+  // };
+
   componentDidMount() {
-    // this.getSummonerDetails();
+    // this.setChampions();
     // this.searchSummonerName();
   }
 
@@ -86,7 +94,7 @@ class App extends Component {
   };
 
   filterQueueType = (summoner) => {
-    console.log(summoner);
+    // console.log(summoner);
     if (summoner === []) {
       console.log("hello");
     } else {
@@ -134,37 +142,31 @@ class App extends Component {
           term={this.state.searchTerm}
           findSummoner={this.searchSummonerName}
         />
-
-        {this.state.summonerTier ? (
-          <SummonerProfileCard
-            summonerName={this.state.summonerName}
-            accountId={this.state.accountId}
-            summonerQueue={this.state.summonerQueue}
-            summonerLeagueName={this.state.summonerLeagueName}
-            summonerTier={this.state.summonerTier}
-            summonerRank={this.state.summonerRank}
-            summonerLP={this.state.summonerLP}
-            summonerWins={this.state.summonerWins}
-            summonerLosses={this.state.summonerLosses}
-          />
-        ) : null}
-
-        <SummonerMatchList matchList={this.state.matchList} />
+        <Grid padded columns={2}>
+          <Grid.Row>
+            <Grid.Column width={5}>
+              {this.state.summonerTier ? (
+                <SummonerProfileCard
+                  summonerName={this.state.summonerName}
+                  accountId={this.state.accountId}
+                  summonerQueue={this.state.summonerQueue}
+                  summonerLeagueName={this.state.summonerLeagueName}
+                  summonerTier={this.state.summonerTier}
+                  summonerRank={this.state.summonerRank}
+                  summonerLP={this.state.summonerLP}
+                  summonerWins={this.state.summonerWins}
+                  summonerLosses={this.state.summonerLosses}
+                />
+              ) : null}
+            </Grid.Column>
+            <Grid.Column width={10}>
+              <SummonerMatchList matchList={this.state.matchList} />
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
       </div>
     );
   }
 }
-
-// <SummonerDetails
-//   summonerName={this.state.summonerName}
-//   accountId={this.state.accountId}
-//   summonerQueue={this.state.summonerQueue}
-//   summonerLeagueName={this.state.summonerLeagueName}
-//   summonerTier={this.state.summonerTier}
-//   summonerRank={this.state.summonerRank}
-//   summonerLP={this.state.summonerLP}
-//   summonerWins={this.state.summonerWins}
-//   summonerLosses={this.state.summonerLosses}
-// />
 
 export default App;

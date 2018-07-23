@@ -6,7 +6,11 @@ class SummonerMatchList extends React.Component {
     return (
       <div>
         {this.props.matchList.map((match) => (
-          <SummonerMatchCard key={match.gameId} match={match} />
+          <SummonerMatchCard
+            key={match.gameId}
+            match={match}
+            findAChampion={this.props.findChampion}
+          />
         ))}
       </div>
     );
