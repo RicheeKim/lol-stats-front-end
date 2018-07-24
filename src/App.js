@@ -1,17 +1,14 @@
 import React, { Component } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
-import SummonerDetails from "./components/SummonerDetails";
 import SummonerProfileCard from "./components/SummonerProfileCard";
 import SummonerMatchList from "./components/SummonerMatchList";
-import { Header } from "semantic-ui-react";
-import { Grid, Segment, Divider } from "semantic-ui-react";
-
-const champions = require(`./dragontail-8.14.1/8.14.1/data/en_US/champion.json`);
+import { Header, Grid } from "semantic-ui-react";
 
 const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
+const summonerMatchDetailsURL = "http://localhost:3000/match_details";
 
 class App extends Component {
   constructor() {
@@ -29,6 +26,8 @@ class App extends Component {
       summonerWins: "",
       summonerLosses: "",
       matchList: [],
+      matchIds: [],
+      matchIdDetails: [],
       championList: []
     };
   }
@@ -109,31 +108,70 @@ class App extends Component {
     fetch(summonerMatchesURL + `/${this.state.accountId}`)
       .then((res) => res.json())
       .then((matches) =>
-        this.setState({
-          matchList: matches.matches
-        })
+        this.setState(
+          {
+            matchList: matches.matches,
+            matchIds: matches.matches.map((match) => match.gameId)
+          },
+          () => this.getMatchDetails()
+        )
       );
   };
 
-  // getSummonerDetails = () => {
-  //   this.searchSummonerName().then(this.getSummonerData());
+  //   getMatchDetails = () => {
+  //     const promises = this.state.matchIds.map(id => {
+  //     return fetch(summonerMatchDetailsURL + `/${id}`)}
+  //
+  // Promise.all(promises)
+  //     .then((res) => res.json())
+  //   }
+
+  // getMatchDetails = () => {
+  //   const promises = this.state.matchIds.map((id) =>
+  //     fetch(summonerMatchDetailsURL + `/${id}`)
+  //   );
+  //   // this.setState({ matchIdDetails: promises });
+  //   // console.log(this.state.matchIdDetails);
+  //   // console.log(promises);
+  //   Promise.all(promises).then(
+  //     (res) => this.setState({ matchIdDetails: res })
+  //     // resp.json().then((game) => this.setState({ matchIdDetails: game }))
+  //     // )
+  //   );
   // };
 
-  // searchTransactions = () => {
-  //   if (this.state.searchTerm) {
-  //     return this.state.transactions.filter(
-  //       (transaction) =>
-  //         transaction.description
-  //           .toLowerCase()
-  //           .includes(this.state.searchTerm) ||
-  //         transaction.category.toLowerCase().includes(this.state.searchTerm)
-  //     );
-  //   } else {
-  //     return this.state.transactions;
-  //   }
+  getMatchDetails = () => {
+    const promises = this.state.matchIds.map((id) =>
+      fetch(summonerMatchDetailsURL + `/${id}`)
+    );
+    Promise.all(promises).then((res) =>
+      res.forEach((resp) =>
+        resp.json().then((game) =>
+          this.setState({
+            matchIdDetails: [...this.state.matchIdDetails, game]
+          })
+        )
+      )
+    );
+  };
+
+  // mapThroughMatchDetails = (matchIds) => {
+  //   matchIds.map((id) => id);
   // };
+  //
+  // getMatchDetails = () => {
+  //   fetch(
+  //     summonerMatchDetailsURL +
+  //       `${this.mapThroughMatchDetails(this.state.matchIds)}`
+  //   )
+  //     .then((res) => res.json())
+  //     .then((matches) => console.log(matches));
+  // };
+
+  // console.log(this.state.matchIds.map(matchId => matchId))
 
   render() {
+    // this.state.matchIds.map((element) => console.log(element));
     return (
       <div className="App">
         <Header size="huge">LeagueStats</Header>
@@ -160,7 +198,11 @@ class App extends Component {
               ) : null}
             </Grid.Column>
             <Grid.Column width={10}>
-              <SummonerMatchList matchList={this.state.matchList} />
+              <SummonerMatchList
+                matchList={this.state.matchList}
+                matchIds={this.state.matchIds}
+                matchDetails={this.state.matchIdDetails}
+              />
             </Grid.Column>
           </Grid.Row>
         </Grid>
