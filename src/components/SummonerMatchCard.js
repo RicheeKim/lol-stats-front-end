@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Segment, Grid } from "semantic-ui-react";
+import { Container, Segment } from "semantic-ui-react";
 
 class SummonerMatchCard extends React.Component {
   render() {
@@ -38,21 +38,11 @@ class SummonerMatchCard extends React.Component {
     // console.log(this.props.matchId);
 
     return (
-      <Container>
-        <Segment>
-          <Grid>
-            <Grid.Row>
-              <Grid.Column width={3}>
-                <img src={championPicSource} height="60" width="60" />
-                <h4>{championName}</h4>
-              </Grid.Column>
-              <Grid.Column width={5}>
-                <h3>Role: {laneCheck()}</h3>
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-        </Segment>
-      </Container>
+      <div>
+        <img src={championPicSource} height="60" width="60" />
+        <h4>{championName}</h4>
+        <p>Role: {laneCheck()}</p>
+      </div>
     );
   }
 }

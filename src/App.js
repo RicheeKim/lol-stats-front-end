@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
-import SummonerProfileCard from "./components/SummonerProfileCard";
+import Navbar from "./components/Navbar";
+// import MatchContainer from "./components/MatchContainer";
 import SummonerMatchList from "./components/SummonerMatchList";
+import SummonerProfileCard from "./components/SummonerProfileCard";
+
 import { Header, Grid } from "semantic-ui-react";
 
 const summonerNameURL = "http://localhost:3000/summoner_name";
@@ -202,6 +205,7 @@ class App extends Component {
                 matchList={this.state.matchList}
                 matchIds={this.state.matchIds}
                 matchDetails={this.state.matchIdDetails}
+                summonerName={this.state.summonerName}
               />
             </Grid.Column>
           </Grid.Row>
