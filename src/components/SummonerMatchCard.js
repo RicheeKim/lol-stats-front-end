@@ -38,7 +38,11 @@ class SummonerMatchCard extends React.Component {
     // console.log(this.props.matchId);
 
     return (
-      <div>
+      <div
+        style={{
+          height: 200,
+          border: "3px solid blue"
+        }}>
         <img src={championPicSource} height="60" width="60" />
         <h4>{championName}</h4>
         <p>Role: {laneCheck()}</p>

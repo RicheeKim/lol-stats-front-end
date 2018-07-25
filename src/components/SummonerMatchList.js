@@ -4,33 +4,12 @@ import SummonerMatchDetailsCard from "./SummonerMatchDetailsCard";
 import { Grid, Container, Segment } from "semantic-ui-react";
 
 class SummonerMatchList extends React.Component {
-  // constructor(props) {
-  //   super(props);
-  //   this.state = {
-  //     matchDetailz: []
-  //   };
-  // }
-  //
-  // componentDidMount() {
-  //   this.setDetails();
-  // }
-  //
-  // setDetails = () => {
-  //   this.props.matchDetails.map((resp) =>
-  //     resp
-  //       .json()
-  //       .then((game) =>
-  //         this.setState({ matchDetailz: [...this.state.matchDetailz, game] })
-  //       )
-  //   );
-  // };
-
   render() {
     // console.log(this.props.matchDetails);
     // console.log(this.props.matchList);
     // console.log(this.props.summonerName);
     return (
-      <Grid centered columns={2}>
+      <Grid centered padded columns={2}>
         <Grid.Row centered columns={2}>
           <Grid.Column width={3}>
             {this.props.matchList.map((match) => (

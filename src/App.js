@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 // import MatchContainer from "./components/MatchContainer";
 import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
+// import Test from "./components/Test";
 
 import { Header, Grid } from "semantic-ui-react";
 
@@ -12,6 +13,7 @@ const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 const summonerMatchDetailsURL = "http://localhost:3000/match_details";
+let cyan = "#37BC9B";
 
 class App extends Component {
   constructor() {
@@ -176,7 +178,7 @@ class App extends Component {
   render() {
     // this.state.matchIds.map((element) => console.log(element));
     return (
-      <div className="App">
+      <div className="App" style={{ height: 10000, background: cyan }}>
         <Header size="huge">LeagueStats</Header>
         <Searchbar
           handleSearch={this.handleChange}

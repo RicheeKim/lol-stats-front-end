@@ -32,12 +32,15 @@ class SummonerMatchDetailsCard extends React.Component {
     // console.log(this.props.match);
 
     return (
-      <div>
+      <div
+        style={{
+          height: 200,
+          border: "3px solid blue"
+        }}>
         <p>Level: {foundParticipantIdStats.champLevel}</p>
         <p>{foundParticipantIdStats.win ? "Win" : "Loss"}</p>
         <p>
-          {foundParticipantIdStats.kills} /
-          {foundParticipantIdStats.deaths} /
+          {foundParticipantIdStats.kills} / {foundParticipantIdStats.deaths} /{" "}
           {foundParticipantIdStats.assists}
         </p>
       </div>
