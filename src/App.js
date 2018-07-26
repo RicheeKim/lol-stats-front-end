@@ -7,18 +7,19 @@ import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
 // import Test from "./components/Test";
 
-import { Header, Grid } from "semantic-ui-react";
+import { Header, Grid, Menu, Input, Image } from "semantic-ui-react";
 
 const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 const summonerMatchDetailsURL = "http://localhost:3000/match_details";
-let cyan = "#37BC9B";
+let color = "#06CEFF";
 
 class App extends Component {
   constructor() {
     super();
     this.state = {
+      activeItem: "home",
       searchTerm: "",
       summonerName: "",
       accountId: "",
@@ -37,6 +38,8 @@ class App extends Component {
     };
   }
 
+  handleItemClick = (e, { name }) => this.setState({ activeItem: name });
+
   handleChange = (e) => {
     let searchingTerm = e.target.value;
 
@@ -54,6 +57,7 @@ class App extends Component {
   componentDidMount() {
     // this.setChampions();
     // this.searchSummonerName();
+    // this.getSummonerMatches();
   }
 
   searchSummonerName = () => {
@@ -123,28 +127,6 @@ class App extends Component {
       );
   };
 
-  //   getMatchDetails = () => {
-  //     const promises = this.state.matchIds.map(id => {
-  //     return fetch(summonerMatchDetailsURL + `/${id}`)}
-  //
-  // Promise.all(promises)
-  //     .then((res) => res.json())
-  //   }
-
-  // getMatchDetails = () => {
-  //   const promises = this.state.matchIds.map((id) =>
-  //     fetch(summonerMatchDetailsURL + `/${id}`)
-  //   );
-  //   // this.setState({ matchIdDetails: promises });
-  //   // console.log(this.state.matchIdDetails);
-  //   // console.log(promises);
-  //   Promise.all(promises).then(
-  //     (res) => this.setState({ matchIdDetails: res })
-  //     // resp.json().then((game) => this.setState({ matchIdDetails: game }))
-  //     // )
-  //   );
-  // };
-
   getMatchDetails = () => {
     const promises = this.state.matchIds.map((id) =>
       fetch(summonerMatchDetailsURL + `/${id}`)
@@ -174,17 +156,48 @@ class App extends Component {
   // };
 
   // console.log(this.state.matchIds.map(matchId => matchId))
-
+  // style={{ height: 10000, background: color }}
   render() {
     // this.state.matchIds.map((element) => console.log(element));
+    const activeItem = this.state.activeItem;
+
     return (
-      <div className="App" style={{ height: 10000, background: cyan }}>
+      <div className="App">
+        <br />
         <Header size="huge">LeagueStats</Header>
-        <Searchbar
-          handleSearch={this.handleChange}
-          term={this.state.searchTerm}
-          findSummoner={this.searchSummonerName}
-        />
+
+        <Menu color="red">
+          <Menu.Item
+            name="home"
+            active={activeItem === "home"}
+            onClick={this.handleItemClick}>
+            Home
+          </Menu.Item>
+
+          <Menu.Item
+            name="leaderboard"
+            active={activeItem === "leaderboard"}
+            onClick={this.handleItemClick}>
+            Leaderboard
+          </Menu.Item>
+
+          <Menu.Item
+            name="champions"
+            active={activeItem === "champions"}
+            onClick={this.handleItemClick}>
+            Champions
+          </Menu.Item>
+          <Menu.Menu position="right">
+            <Menu.Item>
+              <Searchbar
+                handleSearch={this.handleChange}
+                term={this.state.searchTerm}
+                findSummoner={this.searchSummonerName}
+              />
+            </Menu.Item>
+          </Menu.Menu>
+        </Menu>
+
         <Grid padded columns={2}>
           <Grid.Row>
             <Grid.Column width={5}>

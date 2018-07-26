@@ -43,6 +43,8 @@ class SummonerMatchDetailsCard extends React.Component {
           {foundParticipantIdStats.kills} / {foundParticipantIdStats.deaths} /{" "}
           {foundParticipantIdStats.assists}
         </p>
+        <p>Total Gold: {foundParticipantIdStats.goldEarned}</p>
+        <p>CS: {foundParticipantIdStats.totalMinionsKilled}</p>
       </div>
     );
   }
