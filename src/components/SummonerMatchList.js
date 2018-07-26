@@ -21,8 +21,8 @@ class SummonerMatchList extends React.Component {
     // console.log(this.props.matchDetails);
 
     return (
-      <Grid centered padded columns={2}>
-        <Grid.Row centered columns={2}>
+      <Grid columns={2}>
+        <Grid.Row columns={2}>
           <Grid.Column width={3}>
             {this.props.matchList.map((match) => (
               <SummonerMatchCard
@@ -33,7 +33,7 @@ class SummonerMatchList extends React.Component {
               />
             ))}
           </Grid.Column>
-          <Grid.Column width={8}>
+          <Grid.Column width={12} style={{ marginLeft: -2.3 + "em" }}>
             {this.props.matchDetails.map((match) => (
               <SummonerMatchDetailsCard
                 match={match}

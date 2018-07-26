@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
 import Navbar from "./components/Navbar";
-// import MatchContainer from "./components/MatchContainer";
 import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
 // import Test from "./components/Test";
@@ -162,7 +161,7 @@ class App extends Component {
     const activeItem = this.state.activeItem;
 
     return (
-      <div className="App">
+      <div className="App" style={{ height: 10000, background: color }}>
         <br />
         <Header size="huge">LeagueStats</Header>
 
@@ -198,7 +197,7 @@ class App extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Grid padded columns={2}>
+        <Grid columns={2}>
           <Grid.Row>
             <Grid.Column width={5}>
               {this.state.summonerTier ? (
