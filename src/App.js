@@ -161,7 +161,7 @@ class App extends Component {
     const activeItem = this.state.activeItem;
 
     return (
-      <div className="App" style={{ height: 10000, background: color }}>
+      <div className="App">
         <br />
         <Header size="huge">LeagueStats</Header>
 
@@ -197,9 +197,9 @@ class App extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Grid columns={2}>
+        <Grid>
           <Grid.Row>
-            <Grid.Column width={5}>
+            <Grid.Column width={6}>
               {this.state.summonerTier ? (
                 <SummonerProfileCard
                   summonerName={this.state.summonerName}

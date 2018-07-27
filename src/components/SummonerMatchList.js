@@ -20,29 +20,33 @@ class SummonerMatchList extends React.Component {
     // console.log(this.props.summonerName);
     // console.log(this.props.matchDetails);
 
+    // style={{ marginLeft: -2.3 + "em" }}
+
     return (
-      <Grid columns={2}>
-        <Grid.Row columns={2}>
-          <Grid.Column width={3}>
-            {this.props.matchList.map((match) => (
-              <SummonerMatchCard
-                key={match.gameId}
-                matchId={match.gameId}
-                match={match}
-                findAChampion={this.props.findChampion}
-              />
-            ))}
-          </Grid.Column>
-          <Grid.Column width={12} style={{ marginLeft: -2.3 + "em" }}>
-            {this.props.matchDetails.map((match) => (
-              <SummonerMatchDetailsCard
-                match={match}
-                summonerName={this.props.summonerName}
-              />
-            ))}
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <div className="matchlist">
+        <Grid>
+          <Grid.Row>
+            <Grid.Column width={3}>
+              {this.props.matchList.map((match) => (
+                <SummonerMatchCard
+                  key={match.gameId}
+                  matchId={match.gameId}
+                  match={match}
+                  findAChampion={this.props.findChampion}
+                />
+              ))}
+            </Grid.Column>
+            <Grid.Column width={12} style={{ marginLeft: -2.3 + "em" }}>
+              {this.props.matchDetails.map((match) => (
+                <SummonerMatchDetailsCard
+                  match={match}
+                  summonerName={this.props.summonerName}
+                />
+              ))}
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </div>
     );
   }
 }
