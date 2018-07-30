@@ -4,6 +4,7 @@ import Searchbar from "./components/Searchbar";
 import Navbar from "./components/Navbar";
 import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
+import Leaderboard from "./components/Leaderboard";
 // import Test from "./components/Test";
 
 import { Header, Grid, Menu, Input, Image } from "semantic-ui-react";
@@ -12,6 +13,7 @@ const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 const summonerMatchDetailsURL = "http://localhost:3000/match_details";
+const leaderboardURL = "http://localhost:3000/leaderboard";
 let color = "#06CEFF";
 
 class App extends Component {
@@ -33,7 +35,8 @@ class App extends Component {
       matchList: [],
       matchIds: [],
       matchIdDetails: [],
-      championList: []
+      championList: [],
+      leaderboard: []
     };
   }
 
@@ -54,7 +57,7 @@ class App extends Component {
   // };
 
   componentDidMount() {
-    // this.setChampions();
+    this.getLeaderboard();
     // this.searchSummonerName();
     // this.getSummonerMatches();
   }
@@ -141,20 +144,12 @@ class App extends Component {
     );
   };
 
-  // mapThroughMatchDetails = (matchIds) => {
-  //   matchIds.map((id) => id);
-  // };
-  //
-  // getMatchDetails = () => {
-  //   fetch(
-  //     summonerMatchDetailsURL +
-  //       `${this.mapThroughMatchDetails(this.state.matchIds)}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((matches) => console.log(matches));
-  // };
+  getLeaderboard = () => {
+    fetch(leaderboardURL)
+      .then((res) => res.json())
+      .then((obj) => this.setState({ leaderboard: obj.entries }));
+  };
 
-  // console.log(this.state.matchIds.map(matchId => matchId))
   // style={{ height: 10000, background: color }}
   render() {
     // this.state.matchIds.map((element) => console.log(element));
@@ -224,6 +219,8 @@ class App extends Component {
             </Grid.Column>
           </Grid.Row>
         </Grid>
+
+        <Leaderboard leaderboard={this.state.leaderboard} />
       </div>
     );
   }
