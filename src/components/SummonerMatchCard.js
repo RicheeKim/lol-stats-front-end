@@ -20,7 +20,7 @@ class SummonerMatchCard extends React.Component {
     const championPic = Object.values(champions.data).map(function(element) {
       if (element.key == champId) {
         championPicName = element.image.full;
-        // console.log(championPicName);
+
         return championPicName;
       }
     });
@@ -35,13 +35,11 @@ class SummonerMatchCard extends React.Component {
       }
     };
 
-    // console.log(this.props.matchId);
-
     return (
       <div
         style={{
           height: 200,
-          borderBottom: "3px solid #06CEFF",
+          borderBottom: "3px solid #3498DB",
           borderRadius: "7px 0px 0px 7px",
           background: "white"
         }}>

@@ -6,22 +6,6 @@ import { Grid, Container, Segment } from "semantic-ui-react";
 
 class SummonerMatchList extends React.Component {
   render() {
-    // const allMatchDetails = _.zip(
-    //   this.props.matchList,
-    //   this.props.matchDetails
-    // );
-    //
-    // allMatchDetails.map((matchDetail) =>
-    //   console.log(matchDetail[1].platformId)
-    // );
-
-    // console.log(allMatchDetails);
-    // console.log(this.props.matchList);
-    // console.log(this.props.summonerName);
-    // console.log(this.props.matchDetails);
-
-    // style={{ marginLeft: -2.3 + "em" }}
-
     return (
       <div className="matchlist">
         <Grid>

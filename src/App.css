@@ -1,7 +1,7 @@
 .App {
   text-align: center;
   height: 120vh;
-  background-color: #06ceff;
+  background-color: #3498db;
 }
 
 .App-logo {
@@ -31,6 +31,12 @@
 }
 
 .leaderboard {
+  height: 90vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.championlist {
   height: 90vh;
   overflow-y: scroll;
   overflow-x: hidden;

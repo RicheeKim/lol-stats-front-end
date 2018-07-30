@@ -5,7 +5,10 @@ import Navbar from "./components/Navbar";
 import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
 import Leaderboard from "./components/Leaderboard";
+import ChampionsList from "./components/ChampionsList";
 // import Test from "./components/Test";
+
+import { Route, Switch, withRouter } from "react-router-dom";
 
 import { Header, Grid, Menu, Input, Image } from "semantic-ui-react";
 
@@ -20,7 +23,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      activeItem: "home",
+      activeItem: "null",
       searchTerm: "",
       summonerName: "",
       accountId: "",
@@ -49,12 +52,6 @@ class App extends Component {
       searchTerm: searchingTerm
     });
   };
-
-  // setChampions = () => {
-  //   Object.keys(champions.data).forEach(function(key) {
-  //     this.setState({ championList: champions.data[key].key });
-  //   });
-  // };
 
   componentDidMount() {
     this.getLeaderboard();
@@ -152,7 +149,6 @@ class App extends Component {
 
   // style={{ height: 10000, background: color }}
   render() {
-    // this.state.matchIds.map((element) => console.log(element));
     const activeItem = this.state.activeItem;
 
     return (
@@ -164,21 +160,21 @@ class App extends Component {
           <Menu.Item
             name="home"
             active={activeItem === "home"}
-            onClick={this.handleItemClick}>
+            onClick={() => this.props.history.push("/")}>
             Home
           </Menu.Item>
 
           <Menu.Item
             name="leaderboard"
             active={activeItem === "leaderboard"}
-            onClick={this.handleItemClick}>
+            onClick={() => this.props.history.push("/leaderboard")}>
             Leaderboard
           </Menu.Item>
 
           <Menu.Item
             name="champions"
             active={activeItem === "champions"}
-            onClick={this.handleItemClick}>
+            onClick={() => this.props.history.push("/champions")}>
             Champions
           </Menu.Item>
           <Menu.Menu position="right">
@@ -192,38 +188,51 @@ class App extends Component {
           </Menu.Menu>
         </Menu>
 
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={6}>
-              {this.state.summonerTier ? (
-                <SummonerProfileCard
-                  summonerName={this.state.summonerName}
-                  accountId={this.state.accountId}
-                  summonerQueue={this.state.summonerQueue}
-                  summonerLeagueName={this.state.summonerLeagueName}
-                  summonerTier={this.state.summonerTier}
-                  summonerRank={this.state.summonerRank}
-                  summonerLP={this.state.summonerLP}
-                  summonerWins={this.state.summonerWins}
-                  summonerLosses={this.state.summonerLosses}
-                />
-              ) : null}
-            </Grid.Column>
-            <Grid.Column width={10}>
-              <SummonerMatchList
-                matchList={this.state.matchList}
-                matchIds={this.state.matchIds}
-                matchDetails={this.state.matchIdDetails}
-                summonerName={this.state.summonerName}
-              />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
+        <Switch>
+          <Route
+            exact
+            path="/"
+            render={() => (
+              <Grid>
+                <Grid.Row>
+                  <Grid.Column width={6}>
+                    {this.state.summonerTier ? (
+                      <SummonerProfileCard
+                        summonerName={this.state.summonerName}
+                        accountId={this.state.accountId}
+                        summonerQueue={this.state.summonerQueue}
+                        summonerLeagueName={this.state.summonerLeagueName}
+                        summonerTier={this.state.summonerTier}
+                        summonerRank={this.state.summonerRank}
+                        summonerLP={this.state.summonerLP}
+                        summonerWins={this.state.summonerWins}
+                        summonerLosses={this.state.summonerLosses}
+                      />
+                    ) : null}
+                  </Grid.Column>
+                  <Grid.Column width={10}>
+                    <SummonerMatchList
+                      matchList={this.state.matchList}
+                      matchIds={this.state.matchIds}
+                      matchDetails={this.state.matchIdDetails}
+                      summonerName={this.state.summonerName}
+                    />
+                  </Grid.Column>
+                </Grid.Row>
+              </Grid>
+            )}
+          />
 
-        <Leaderboard leaderboard={this.state.leaderboard} />
+          <Route
+            path="/leaderboard"
+            render={() => <Leaderboard leaderboard={this.state.leaderboard} />}
+          />
+
+          <Route path="/champions" render={() => <ChampionsList />} />
+        </Switch>
       </div>
     );
   }
 }
 
-export default App;
+export default withRouter(App);
