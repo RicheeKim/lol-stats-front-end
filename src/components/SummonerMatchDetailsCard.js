@@ -56,12 +56,12 @@ class SummonerMatchDetailsCard extends React.Component {
         <br />
         <Grid>
           <Grid.Row>
-            <Grid.Column width={3}>
+            <Grid.Column width={5}>
               <p>{this.determineQueueType()}</p>
               <p>{foundParticipantIdStats.win ? "Victory" : "Defeat"}</p>
               <p>{this.getTime()}</p>
             </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column width={5}>
               <p>K / D / A</p>
               <p>
                 {foundParticipantIdStats.kills} /{" "}
@@ -69,7 +69,7 @@ class SummonerMatchDetailsCard extends React.Component {
                 {foundParticipantIdStats.assists}
               </p>
             </Grid.Column>
-            <Grid.Column width={3}>
+            <Grid.Column width={5}>
               <p>Level: {foundParticipantIdStats.champLevel}</p>
               <p>CS: {foundParticipantIdStats.totalMinionsKilled}</p>
               <p>Total Gold: {foundParticipantIdStats.goldEarned}</p>

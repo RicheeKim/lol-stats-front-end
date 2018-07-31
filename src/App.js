@@ -6,6 +6,7 @@ import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
 import Leaderboard from "./components/Leaderboard";
 import ChampionsList from "./components/ChampionsList";
+import LoginForm from "./components/LoginForm";
 // import Test from "./components/Test";
 
 import { Route, Switch, withRouter } from "react-router-dom";
@@ -17,6 +18,7 @@ const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 const summonerMatchDetailsURL = "http://localhost:3000/match_details";
 const leaderboardURL = "http://localhost:3000/leaderboard";
+const logo = require(`./logo1.png`);
 let color = "#06CEFF";
 
 class App extends Component {
@@ -154,7 +156,8 @@ class App extends Component {
     return (
       <div className="App">
         <br />
-        <Header size="huge">LeagueStats</Header>
+
+        <Image centered src={logo} />
 
         <Menu color="red">
           <Menu.Item
@@ -177,6 +180,14 @@ class App extends Component {
             onClick={() => this.props.history.push("/champions")}>
             Champions
           </Menu.Item>
+
+          <Menu.Item
+            name="login"
+            active={activeItem === "login"}
+            onClick={() => this.props.history.push("/login")}>
+            Login
+          </Menu.Item>
+
           <Menu.Menu position="right">
             <Menu.Item>
               <Searchbar
@@ -195,7 +206,7 @@ class App extends Component {
             render={() => (
               <Grid>
                 <Grid.Row>
-                  <Grid.Column width={6}>
+                  <Grid.Column width={7}>
                     {this.state.summonerTier ? (
                       <SummonerProfileCard
                         summonerName={this.state.summonerName}
@@ -210,7 +221,7 @@ class App extends Component {
                       />
                     ) : null}
                   </Grid.Column>
-                  <Grid.Column width={10}>
+                  <Grid.Column width={9}>
                     <SummonerMatchList
                       matchList={this.state.matchList}
                       matchIds={this.state.matchIds}
@@ -229,6 +240,7 @@ class App extends Component {
           />
 
           <Route path="/champions" render={() => <ChampionsList />} />
+          <Route path="/login" render={() => <LoginForm />} />
         </Switch>
       </div>
     );

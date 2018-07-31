@@ -42,6 +42,10 @@
   overflow-x: hidden;
 }
 
+.login-form {
+  height: 90vh;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
