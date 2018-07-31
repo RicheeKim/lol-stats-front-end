@@ -7,6 +7,7 @@ import SummonerProfileCard from "./components/SummonerProfileCard";
 import Leaderboard from "./components/Leaderboard";
 import ChampionsList from "./components/ChampionsList";
 import LoginForm from "./components/LoginForm";
+import SignUp from "./components/SignUp";
 // import Test from "./components/Test";
 
 import { Route, Switch, withRouter } from "react-router-dom";

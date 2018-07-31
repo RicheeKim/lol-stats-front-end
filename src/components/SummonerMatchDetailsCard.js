@@ -27,10 +27,25 @@ class SummonerMatchDetailsCard extends React.Component {
   determineQueueType = () => {
     if (this.props.match.queueId == 420) {
       return "Ranked Solo";
+    } else if (this.props.match.queueId == 440) {
+      return "Ranked Flex";
     } else {
       return "Normal Game";
     }
   };
+
+  // calculateKDA = () => {
+  //   if (foundParticipantIdStats.deaths === 0) {
+  //     return (
+  //       foundParticipantIdStats.kills + foundParticipantIdStats.assists
+  //     ).toFixed(2);
+  //   } else {
+  //     return (
+  //   (foundParticipantIdStats.kills + foundParticipantIdStats.assists) /
+  //   foundParticipantIdStats.deaths
+  // ).toFixed(2);
+  //   }
+  // };
 
   render() {
     const summonerName = this.props.summonerName;
@@ -53,6 +68,7 @@ class SummonerMatchDetailsCard extends React.Component {
           borderRadius: "0px 7px 7px 0px",
           background: "white"
         }}>
+        <br />
         <br />
         <Grid>
           <Grid.Row>
