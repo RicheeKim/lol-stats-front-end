@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import Searchbar from "./components/Searchbar";
-import Navbar from "./components/Navbar";
+
 import SummonerMatchList from "./components/SummonerMatchList";
 import SummonerProfileCard from "./components/SummonerProfileCard";
 import Leaderboard from "./components/Leaderboard";
@@ -11,7 +11,7 @@ import LoginForm from "./components/LoginForm";
 
 import { Route, Switch, withRouter } from "react-router-dom";
 
-import { Header, Grid, Menu, Input, Image } from "semantic-ui-react";
+import { Grid, Menu, Image } from "semantic-ui-react";
 
 const summonerNameURL = "http://localhost:3000/summoner_name";
 const summonerDataURL = "http://localhost:3000/summoner_id_data";
@@ -19,7 +19,6 @@ const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 const summonerMatchDetailsURL = "http://localhost:3000/match_details";
 const leaderboardURL = "http://localhost:3000/leaderboard";
 const logo = require(`./logo1.png`);
-let color = "#06CEFF";
 
 class App extends Component {
   constructor() {
@@ -72,7 +71,8 @@ class App extends Component {
             {
               summonerName: summoner.name,
               accountId: summoner.accountId,
-              summonerId: summoner.id
+              summonerId: summoner.id,
+              searchTerm: ""
             },
             () => {
               this.getSummonerData();

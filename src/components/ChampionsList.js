@@ -1,6 +1,6 @@
 import React from "react";
 import Champion from "./Champion";
-import { Grid, Container, Segment, Image } from "semantic-ui-react";
+import { Image } from "semantic-ui-react";
 class ChampionsList extends React.Component {
   render() {
     // let championPicName;

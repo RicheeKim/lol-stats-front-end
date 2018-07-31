@@ -1,5 +1,5 @@
 import React from "react";
-import { Icon, Label, Menu, Table, Header } from "semantic-ui-react";
+import { Table } from "semantic-ui-react";
 
 class Leaderboard extends React.Component {
   render() {

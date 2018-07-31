@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Segment, Grid } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 class SummonerMatchDetailsCard extends React.Component {
   getTime = () => {

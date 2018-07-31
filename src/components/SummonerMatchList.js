@@ -2,7 +2,7 @@ import React from "react";
 // import _ from "lodash";
 import SummonerMatchCard from "./SummonerMatchCard";
 import SummonerMatchDetailsCard from "./SummonerMatchDetailsCard";
-import { Grid, Container, Segment } from "semantic-ui-react";
+import { Grid } from "semantic-ui-react";
 
 class SummonerMatchList extends React.Component {
   render() {
@@ -23,6 +23,7 @@ class SummonerMatchList extends React.Component {
             <Grid.Column width={10} style={{ marginLeft: -2.3 + "em" }}>
               {this.props.matchDetails.map((match) => (
                 <SummonerMatchDetailsCard
+                  key={match.gameId}
                   match={match}
                   summonerName={this.props.summonerName}
                 />
