@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid } from "semantic-ui-react";
+import { Grid, Divider } from "semantic-ui-react";
 
 class SummonerMatchDetailsCard extends React.Component {
   getTime = () => {
@@ -73,13 +73,21 @@ class SummonerMatchDetailsCard extends React.Component {
         <Grid>
           <Grid.Row>
             <Grid.Column width={5}>
-              <p>{this.determineQueueType()}</p>
-              <p>{foundParticipantIdStats.win ? "Victory" : "Defeat"}</p>
+              <p style={{ fontSize: 14 + "px", fontWeight: "bold" }}>
+                {this.determineQueueType()}
+              </p>
+              <Divider />
+              <p style={{ fontSize: 14 + "px", fontWeight: "bold" }}>
+                {foundParticipantIdStats.win ? "Victory" : "Defeat"}
+              </p>
               <p>{this.getTime()}</p>
             </Grid.Column>
             <Grid.Column width={5}>
-              <p>K / D / A</p>
-              <p>
+              <br />
+              <p style={{ fontSize: 14 + "px", fontWeight: "bold" }}>
+                K / D / A
+              </p>
+              <p style={{ fontSize: 14 + "px", fontWeight: "bold" }}>
                 {foundParticipantIdStats.kills} /{" "}
                 {foundParticipantIdStats.deaths} /{" "}
                 {foundParticipantIdStats.assists}
