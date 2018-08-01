@@ -241,7 +241,11 @@ class App extends Component {
           />
 
           <Route path="/champions" render={() => <ChampionsList />} />
-          <Route path="/login" render={() => <LoginForm />} />
+          <Route
+            path="/login"
+            render={() => <LoginForm history={this.props.history} />}
+          />
+          <Route path="/signup" render={() => <SignUp />} />
         </Switch>
       </div>
     );

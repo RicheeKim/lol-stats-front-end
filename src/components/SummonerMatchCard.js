@@ -45,7 +45,12 @@ class SummonerMatchCard extends React.Component {
         <br />
         <br />
 
-        <img src={championPicSource} height="60" width="60" />
+        <img
+          className="img-circle"
+          src={championPicSource}
+          height="75"
+          width="75"
+        />
         <p style={{ fontSize: 14 + "px", fontWeight: "bold" }}>
           {championName}
         </p>

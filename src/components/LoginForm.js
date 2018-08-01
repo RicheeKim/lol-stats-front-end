@@ -8,7 +8,7 @@ import {
   Segment
 } from "semantic-ui-react";
 
-const LoginForm = () => (
+const LoginForm = (props) => (
   <div className="login-form">
     {/*
       Heads up! The styles below are necessary for the correct render of this example.
@@ -24,9 +24,6 @@ const LoginForm = () => (
     `}</style>
     <Grid textAlign="center" verticalAlign="middle">
       <Grid.Column style={{ maxWidth: 450 }}>
-        <Header as="h2" color="teal" textAlign="center">
-          Log-in to your account
-        </Header>
         <Form size="large">
           <Segment stacked>
             <Form.Input
@@ -43,13 +40,19 @@ const LoginForm = () => (
               type="password"
             />
 
-            <Button color="teal" fluid size="large">
+            <Button color="blue" fluid size="large">
               Login
             </Button>
           </Segment>
         </Form>
         <Message>
-          New to us? <a href="#">Sign Up</a>
+          New to us?{" "}
+          <a
+            href="#"
+            name="signup"
+            onClick={() => props.history.push("/signup")}>
+            Sign Up
+          </a>
         </Message>
       </Grid.Column>
     </Grid>
