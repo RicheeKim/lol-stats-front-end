@@ -5,13 +5,10 @@ const SignUp = () => (
   <div align="center">
     <Form>
       <Form.Field width={4}>
-        <label>Email</label>
-        <input placeholder="Email" />
+        <label>E-mail address</label>
+        <input placeholder="E-mail address" />
       </Form.Field>
-      <Form.Field width={4}>
-        <label>Username</label>
-        <input placeholder="Username" />
-      </Form.Field>
+
       <Form.Field width={4}>
         <label>Password</label>
         <input placeholder="Password" />

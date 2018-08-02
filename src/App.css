@@ -1,7 +1,5 @@
 .App {
   text-align: center;
-  height: 120vh;
-  background-color: #3498db;
 }
 
 .App-logo {
@@ -48,6 +46,10 @@
 
 .img-circle {
   border-radius: 50%;
+}
+
+body {
+  background-color: #3498db;
 }
 
 @keyframes App-logo-spin {
