@@ -19,7 +19,7 @@ const summonerDataURL = "http://localhost:3000/summoner_id_data";
 const summonerMatchesURL = "http://localhost:3000/account_id_matches";
 const summonerMatchDetailsURL = "http://localhost:3000/match_details";
 const leaderboardURL = "http://localhost:3000/leaderboard";
-const logo = require(`./logo1.png`);
+const logo = require(`./logo.png`);
 
 class App extends Component {
   constructor() {
